@@ -60,7 +60,7 @@ class _MyAppState extends State<MyApp> {
             child: Icon(
               Icons.alarm,
               size: 300,
-              color: Color.fromRGBO(red.toInt(), 0, 0, 1),
+              color: Color.fromRGBO(red.toInt(), green.toInt(), 0, 1),
             ),
           ),
           Slider(
