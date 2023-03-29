@@ -14,6 +14,18 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  double red = 0;
+  double green = 0;
+  double _counter = 50;
+
+  void _incrementSize() {
+    setState(() {
+      if (_counter >= 50 && _counter <= 500) {
+        _counter += 50;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,12 +49,44 @@ class _MyAppState extends State<MyApp> {
             icon: const Text('L'),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: _incrementSize,
             icon: const Icon(Icons.add),
           ),
         ],
       ),
-      body: Center(child: Icon(Icons.alarm)),
+      body: Column(
+        children: [
+          Center(
+            child: Icon(
+              Icons.alarm,
+              size: 300,
+              color: Color.fromRGBO(red.toInt(), 0, 0, 1),
+            ),
+          ),
+          Slider(
+            activeColor: Colors.red,
+            min: 0,
+            max: 255,
+            value: red,
+            onChanged: (double value) {
+              setState(() {
+                red = value;
+              });
+            },
+          ),
+          Slider(
+            activeColor: Colors.green,
+            min: 0,
+            max: 255,
+            value: green,
+            onChanged: (double value) {
+              setState(() {
+                green = value;
+              });
+            },
+          ),
+        ],
+      ),
     );
   }
 }
